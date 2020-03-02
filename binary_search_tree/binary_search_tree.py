@@ -16,6 +16,7 @@ class BinarySearchTree:
         # let's set some conditionals:
         if type(value) is not int:
             raise ValueError("Not an Int")
+
         if self.value == None:
             self.value = value
             return
@@ -82,16 +83,39 @@ class BinarySearchTree:
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
         pass
+        if node < self.left:
+            return in_order_print(self.left)
+
+        if node > self.right:
+            return in_
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        queue = Queue()
+        queue.enqueue(node)
+        while queue.size > 0:
+            n = queue.dequeue()
+            print(n.value)
+            if n.left:
+                queue.enqueue(n.left)
+            if n.right:
+                queue.enqueue(n.right)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack()
+        stack.push(node)
+        while stack.size >0:
+            n = stack.pop()
+            print(n.value)
+            if n.left:
+                stack.push(n.left)
+            if n.right:
+                stack.push(n.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
